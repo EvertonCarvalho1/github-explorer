@@ -2,7 +2,3 @@
 
 ## 💻 Repositório
 Repositório criado para o desenvolvimento do Github Explorer, projeto construído durante as aulas do módulo Fundamentos do ReactJS da trilha de ReactJS do Bootcamp Ignite da Rocketseat
-
-<h1 align="center">
-  <img alt="tela" title="tela" src=".github/tela.png">
-</h1>
