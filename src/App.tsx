@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom'; 
 import Router from '../src/routes/index'
-
+import GlobalStyle from './styles/global';
 
 const App: React.FC = () =>  {
   return (
@@ -9,6 +9,7 @@ const App: React.FC = () =>  {
     <BrowserRouter>
       <Router/>
     </BrowserRouter>
+    <GlobalStyle/>
   </> 
   )
 }
