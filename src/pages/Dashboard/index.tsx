@@ -4,7 +4,7 @@ import api from "../../services/api";
 
 import logoImg from '../../assets/logo.svg';
 
-import { Title, Form, Repositories } from "./styles";
+import { Title, Form, Repositories, Error} from "./styles";
 
 interface Repository {
     full_name: string;
@@ -17,19 +17,34 @@ interface Repository {
 
 const Dashboard: React.FC = () => {
     const [newRepo, setNewRepo] = useState('');
+    const [inputError, setInputError] = useState('');
     const [repositories, setRepositories] = useState<Repository[]>([]);
     //sempre que criarmos um estado onde o valor dele é um array ou um objeton, é muito importante definirmos o tipo dele
     //Não precisamos tipar tudo o que há de dados, tipamos só o que iremos usar
 
 
     async function handleAddRepository(event: FormEvent<HTMLFormElement>): Promise<void> {
+
         event.preventDefault();
+        
+        if(!newRepo){
+            setInputError('Digite o autor/nome nome do repositório');
+            return;
+            //dou um return pra parar o código
+        };
 
-        const response = await api.get(`repos/${newRepo}`);
-        const repository = response.data;
+        try {
+            const response = await api.get(`repos/${newRepo}`);
+            const repository = response.data;
+    
+            setRepositories([...repositories, repository]);
+            setNewRepo('');
+            setInputError('');
 
-        setRepositories([...repositories, repository]);
-        setNewRepo('')
+        } catch (error) {
+            setInputError('Erro na busca por esse repositório');
+        }
+
     }
 
     return (
@@ -37,7 +52,10 @@ const Dashboard: React.FC = () => {
             <img src={logoImg} alt="logo" />
             <Title>Explore repositórios no GitHub</Title>
 
-            <Form onSubmit={handleAddRepository}>
+            <Form 
+            hasError={Boolean(inputError)}
+            onSubmit={handleAddRepository}
+            >
                 <input
                     type="text"
                     placeholder="Digite o nome do repositório"
@@ -46,6 +64,9 @@ const Dashboard: React.FC = () => {
                 />
                 <button type="submit">Pesquisar</button>
             </Form>
+
+            {/* if simplificado = se o inputError estiver preenchido, renderiza o componente a seguir*/}
+            {inputError && <Error>{inputError}</Error>}
 
             <Repositories>
                 {repositories.map((mapRepo) => {
