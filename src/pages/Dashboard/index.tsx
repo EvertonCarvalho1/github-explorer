@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useEffect } from "react";
 import { FiChevronRight } from 'react-icons/fi';
 import api from "../../services/api";
 
@@ -19,8 +19,23 @@ const Dashboard: React.FC = () => {
     const [newRepo, setNewRepo] = useState('');
     const [inputError, setInputError] = useState('');
     const [repositories, setRepositories] = useState<Repository[]>([]);
+    
+
     //sempre que criarmos um estado onde o valor dele é um array ou um objeton, é muito importante definirmos o tipo dele
     //Não precisamos tipar tudo o que há de dados, tipamos só o que iremos usar
+
+
+    useEffect(() => {
+        const storagedRepositories = localStorage.getItem('GithubExplorer:repositories');
+        console.log(storagedRepositories)
+        setRepositories(JSON.parse(storagedRepositories || '[]'));
+    }, []);
+    
+
+    useEffect(() => {
+        localStorage.setItem('GithubExplorer:repositories', JSON.stringify(repositories));
+
+    }, [repositories]);
 
 
     async function handleAddRepository(event: FormEvent<HTMLFormElement>): Promise<void> {
@@ -28,7 +43,7 @@ const Dashboard: React.FC = () => {
         event.preventDefault();
         
         if(!newRepo){
-            setInputError('Digite o autor/nome nome do repositório');
+            setInputError('Digite o autor/nome do repositório');
             return;
             //dou um return pra parar o código
         };
@@ -43,9 +58,9 @@ const Dashboard: React.FC = () => {
 
         } catch (error) {
             setInputError('Erro na busca por esse repositório');
-        }
+        };
 
-    }
+    };
 
     return (
         <>
