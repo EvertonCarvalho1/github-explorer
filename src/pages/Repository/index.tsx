@@ -1,18 +1,41 @@
 import React from "react";
-import {useRouteMatch} from 'react-router-dom';
+import { useRouteMatch, Link } from 'react-router-dom';
+import { FiChevronLeft } from 'react-icons/fi';
 
-interface RepositoryParams{
+import logoImg from '../../assets/logo.svg';
+
+import { Header, RepositoryInfo } from "./styles";
+
+
+
+interface RepositoryParams {
     paramsrepo: string;
-}
+};
 
 const Repository: React.FC = () => {
-    const {params} = useRouteMatch<RepositoryParams>();
+    const { params } = useRouteMatch<RepositoryParams>();
 
-    return(
-        <h1>Repository {params.paramsrepo}</h1>
+    return (
+        <>
+            <Header>
+                <img src={logoImg} alt='github explorer' />
+
+                <Link to={"/"}>
+                    <FiChevronLeft
+                        size={16}
+                    />
+                    Voltar
+                </Link>
+            </Header>
+
+            <RepositoryInfo>
+                
+            </RepositoryInfo>
+
+        </>
     )
 };
 
-export default Repository; 
-    
+export default Repository;
+
 
