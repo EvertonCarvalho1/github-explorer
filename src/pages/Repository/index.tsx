@@ -32,7 +32,7 @@ const Repository: React.FC = () => {
                 <header>
                     <img src="https://avatars.githubusercontent.com/u/82480230?v=4" alt="" />
                     <div >
-                        <strong>rocktseat/unform</strong>
+                        <strong>EvertonCarvalho1/devfinances</strong>
                         <p>descrição do repositório</p>
                     </div>
                 </header>
@@ -47,10 +47,12 @@ const Repository: React.FC = () => {
                     </li>
                     <li>
                         <strong>67</strong>
-                        <span>Issues</span>
+                        <span>Issues Abertas</span>
                     </li>
                 </ul>
             </RepositoryInfo>
+
+
 
         </>
     )
