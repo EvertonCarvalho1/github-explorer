@@ -1,10 +1,10 @@
 import React from "react";
 import { useRouteMatch, Link } from 'react-router-dom';
-import { FiChevronLeft } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import logoImg from '../../assets/logo.svg';
 
-import { Header, RepositoryInfo } from "./styles";
+import { Header, RepositoryInfo, Issues } from "./styles";
 
 
 
@@ -52,8 +52,17 @@ const Repository: React.FC = () => {
                 </ul>
             </RepositoryInfo>
 
+            <Issues>
+                <Link  to={`fdsdsd`}>
 
+                    <div>
+                        <strong>mapRepo.full_name</strong>
+                        <p>mapRepo.description</p>
+                    </div>
 
+                    <FiChevronRight size={20} />
+                </Link>
+            </Issues>
         </>
     )
 };
