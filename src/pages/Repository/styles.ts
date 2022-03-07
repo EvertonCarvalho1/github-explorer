@@ -26,6 +26,12 @@ export const Header = styled.header`
 `;
 
 export const RepositoryInfo = styled.div`
+    header{
+        display: flex;
+    }
+    img{
+        width: 100px;
+    }
     
 
 `;

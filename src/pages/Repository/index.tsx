@@ -29,7 +29,27 @@ const Repository: React.FC = () => {
             </Header>
 
             <RepositoryInfo>
-                
+                <header>
+                    <img src="https://avatars.githubusercontent.com/u/82480230?v=4" alt="" />
+                    <div >
+                        <strong>rocktseat/unform</strong>
+                        <p>descrição do repositório</p>
+                    </div>
+                </header>
+                <ul>
+                    <li>
+                        <strong>1808</strong>
+                        <span>Stars</span>
+                    </li>
+                    <li>
+                        <strong>48</strong>
+                        <span>Forks</span>
+                    </li>
+                    <li>
+                        <strong>67</strong>
+                        <span>Issues</span>
+                    </li>
+                </ul>
             </RepositoryInfo>
 
         </>
