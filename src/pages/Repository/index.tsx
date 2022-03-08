@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useRouteMatch, Link } from 'react-router-dom';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiLoader } from 'react-icons/fi';
 import api from "../../services/api";
 
 import logoImg from '../../assets/logo.svg';
 
-import { Header, RepositoryInfo, Issues } from "./styles";
+import { Header, RepositoryInfo, Issues, Spin } from "./styles";
 
 
 interface Repository {
@@ -95,13 +95,12 @@ const Repository: React.FC = () => {
                     </ul>
                 </RepositoryInfo>
 
-            ) : <h1>Carregando...</h1>}
+            ) : <Spin><FiLoader size={100} className='loader'/></Spin>}
 
             <Issues>
                 {issues.map((issueItem) => {
                     return (
                         <a key={issueItem.id} href={issueItem.html_url}>
-
                             <div>
                                 <strong>{issueItem.title}</strong>
                                 <p>{issueItem.user.login}</p>
@@ -109,7 +108,6 @@ const Repository: React.FC = () => {
 
                             <FiChevronRight size={20} />
                         </a>
-
                     )
                 })}
             </Issues>

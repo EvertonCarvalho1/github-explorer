@@ -123,6 +123,31 @@ export const Issues = styled.div`
     svg{
         margin-left: auto;
         color: #cbcbd6
-    }    
+    } 
 
 `;
+
+export const Spin = styled.div`
+    width: 100vw;
+    height: 100vh;
+    max-width: 700px;
+    margin:0 auto ;
+
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+
+    @keyframes App-logo-spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .loader{
+        animation: App-logo-spin infinite 2s linear;
+    }
+`;
+
