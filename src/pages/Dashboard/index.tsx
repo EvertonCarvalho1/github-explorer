@@ -1,11 +1,11 @@
 import React, { useState, FormEvent, useEffect } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FiChevronRight } from 'react-icons/fi';
 import api from "../../services/api";
 
 import logoImg from '../../assets/logo.svg';
 
-import { Title, Form, Repositories, Error} from "./styles";
+import { Title, Form, Repositories, Error } from "./styles";
 
 interface Repository {
     full_name: string;
@@ -20,7 +20,7 @@ const Dashboard: React.FC = () => {
     const [newRepo, setNewRepo] = useState('');
     const [inputError, setInputError] = useState('');
     const [repositories, setRepositories] = useState<Repository[]>([]);
-    
+
 
     //sempre que criarmos um estado onde o valor dele é um array ou um objeton, é muito importante definirmos o tipo dele
     //Não precisamos tipar tudo o que há de dados, tipamos só o que iremos usar
@@ -31,35 +31,35 @@ const Dashboard: React.FC = () => {
         console.log(storagedRepositories)
         setRepositories(JSON.parse(storagedRepositories || '[]'));
     }, []);
-    
+
 
     useEffect(() => {
         localStorage.setItem('GithubExplorer:repositories', JSON.stringify(repositories));
 
-    }, [repositories]);
+        }, [repositories]);
 
 
-    async function handleAddRepository(event: FormEvent<HTMLFormElement>): Promise<void> {
+        async function handleAddRepository(event: FormEvent<HTMLFormElement>): Promise<void> {
 
-        event.preventDefault();
-        
-        if(!newRepo){
-            setInputError('Digite o autor/nome do repositório');
-            return;
-            //dou um return pra parar o código
-        };
+            event.preventDefault();
 
-        try {
-            const response = await api.get(`repos/${newRepo}`);
-            const repository = response.data;
-    
-            setRepositories([...repositories, repository]);
-            setNewRepo('');
-            setInputError('');
+            if (!newRepo) {
+                setInputError('Digite o autor/nome do repositório');
+                return;
+                //dou um return pra parar o código
+            };
 
-        } catch (error) {
-            setInputError('Erro na busca por esse repositório');
-        };
+            try {
+                const response = await api.get(`repos/${newRepo}`);
+                const repository = response.data;
+
+                setRepositories([...repositories, repository]);
+                setNewRepo('');
+                setInputError('');
+
+            } catch (error) {
+                setInputError('Erro na busca por esse repositório');
+            };
 
     };
 
@@ -68,9 +68,9 @@ const Dashboard: React.FC = () => {
             <img src={logoImg} alt="logo" />
             <Title>Explore repositórios no GitHub</Title>
 
-            <Form 
-            hasError={Boolean(inputError)}
-            onSubmit={handleAddRepository}
+            <Form
+                hasError={Boolean(inputError)}
+                onSubmit={handleAddRepository}
             >
                 <input
                     type="text"
