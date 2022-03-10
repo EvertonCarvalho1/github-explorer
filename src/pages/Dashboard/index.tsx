@@ -1,11 +1,17 @@
-import React, { useState, FormEvent, useEffect } from "react";
+import React, { useState, FormEvent, useEffect, useCallback } from "react";
 import { Link } from 'react-router-dom';
 import { FiChevronRight } from 'react-icons/fi';
 import api from "../../services/api";
 
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/BorderColor';
+import Stack from '@mui/material/Stack';
+
 import logoImg from '../../assets/logo.svg';
 
-import { Title, Form, Repositories, Error } from "./styles";
+import { Title, Form, Repositories, Error, ModifyContainer } from "./styles";
+import { IconButton } from "@mui/material";
 
 interface Repository {
     full_name: string;
@@ -36,32 +42,36 @@ const Dashboard: React.FC = () => {
     useEffect(() => {
         localStorage.setItem('GithubExplorer:repositories', JSON.stringify(repositories));
 
-        }, [repositories]);
+    }, [repositories]);
 
 
-        async function handleAddRepository(event: FormEvent<HTMLFormElement>): Promise<void> {
+    async function handleAddRepository(event: FormEvent<HTMLFormElement>): Promise<void> {
 
-            event.preventDefault();
+        event.preventDefault();
 
-            if (!newRepo) {
-                setInputError('Digite o autor/nome do repositório');
-                return;
-                //dou um return pra parar o código
-            };
+        if (!newRepo) {
+            setInputError('Digite o autor/nome do repositório');
+            return;
+            //dou um return pra parar o código
+        };
 
-            try {
-                const response = await api.get(`repos/${newRepo}`);
-                const repository = response.data;
+        try {
+            const response = await api.get(`repos/${newRepo}`);
+            const repository = response.data;
 
-                setRepositories([...repositories, repository]);
-                setNewRepo('');
-                setInputError('');
+            setRepositories([...repositories, repository]);
+            setNewRepo('');
+            setInputError('');
 
-            } catch (error) {
-                setInputError('Erro na busca por esse repositório');
-            };
-
+        } catch (error) {
+            setInputError('Erro na busca por esse repositório');
+        };
     };
+
+    const handleDelete = useCallback((mapRepo_full_name) => {
+        const find = repositories.filter(r => r.full_name !== mapRepo_full_name);
+        setRepositories(find);
+    }, [repositories]);
 
     return (
         <>
@@ -87,18 +97,32 @@ const Dashboard: React.FC = () => {
             <Repositories>
                 {repositories.map((mapRepo) => {
                     return (
-                        <Link key={mapRepo.full_name} to={`/repository/${mapRepo.full_name}`}>
-                            <img src={mapRepo.owner.avatar_url} alt={mapRepo.owner.login} />
-                            <div>
-                                <strong>{mapRepo.full_name}</strong>
-                                <p>{mapRepo.description}</p>
-                            </div>
+                        <>
+                            <Link key={mapRepo.full_name} to={`/repository/${mapRepo.full_name}`}>
+                                <img src={mapRepo.owner.avatar_url} alt={mapRepo.owner.login} />
+                                <div>
+                                    <strong>{mapRepo.full_name}</strong>
+                                    <p>{mapRepo.description}</p>
+                                </div>
 
-                            <FiChevronRight size={20} />
-                        </Link>
+                                <FiChevronRight size={20} />
+                            </Link>
+
+                            <ModifyContainer >
+                                <Button onClick={() => handleDelete(mapRepo.full_name)}
+                                    className="button1"
+                                    variant="outlined"
+                                    startIcon={<DeleteIcon
+                                    />}>
+                                    Deletar
+                                </Button>
+                            </ModifyContainer>
+                        </>
                     )
                 })}
             </Repositories>
+
+
         </>
     )
 };

@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 
 interface FormProps {
@@ -73,12 +73,15 @@ export const Repositories = styled.div`
       text-decoration: none;
       display: flex;
       align-items: center;
-      transition: transform 0.2s;
-      
+      transition: background  0.2s;
 
       &:hover{
-        transform: translateX(10px);
-    }
+            background: ${shade(0.1, '#FFF')};
+            p{
+                color: #9494a4;
+            }
+        }
+
       & + a{
           margin-top: 10px;
       }    
@@ -110,4 +113,41 @@ export const Repositories = styled.div`
         margin-left: auto;
         color: #cbcbd6
     }    
+`;
+
+
+export const ModifyContainer = styled.div`
+    margin: 0px !important;
+
+    .button1{
+      border: 0;
+      background: #FFF;
+      color: #a8a8b3;
+
+        &:hover{
+            border: 0;
+            color: ${shade(0.2, '#a8a8b3')};
+            background-color: rgb(0 0 0 / 4%);
+        }
+    }
+
+    .button2{
+        background: #a8a8b3;
+        box-shadow:none ;
+        &:hover{
+            background: ${shade(0.2, '#a8a8b3')};
+            box-shadow:none ;
+        }
+    }
+    
+
+    display: flex;
+    button{
+        margin:5px 0 25px 0;
+
+        & + button{
+            margin-left: 15px;
+        }
+    }
+
 `;

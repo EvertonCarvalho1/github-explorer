@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {shade} from "polished"
 
 
 export const Header = styled.header`
@@ -93,12 +94,15 @@ export const Issues = styled.div`
       text-decoration: none;
       display: flex;
       align-items: center;
-      transition: transform 0.2s;
-      
+      transition: background  0.2s;
 
       &:hover{
-        transform: translateX(10px);
-    }
+            background: ${shade(0.1, '#FFF')};
+            p{
+                color: #9494a4;
+            }
+        }
+
       & + a{
           margin-top: 10px;
       }    
