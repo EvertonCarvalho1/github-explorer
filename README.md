@@ -3,9 +3,9 @@
 </h1>
 
 <p align="center">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/MatheusPires99/github-explorer">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/MatheusPires99/github-explorer">
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/MatheusPires99/github-explorer">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/EvertonCarvalho1/github-explorer">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/EvertonCarvalho1/github-explorer">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/EvertonCarvalho1/github-explorer">
 </p>
 
 <p align="center">
