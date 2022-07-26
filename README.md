@@ -9,17 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="#page_with_curl-sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#books-requisitos">Requisitos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-começando">Começando</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#gear-iniciando-front-end">ReactJS</a>
-</p>
-
-<p align="center">
-  <img alt="Github Explorer" src="https://res.cloudinary.com/matheuspires/image/upload/v1587645519/github_explorer10_hrueqg.gif" />
-  <br />
-  <br />
-  <a href="https://github-explorer-gostack.netlify.app/">Demo da aplicação</a>
+  <img alt="Github Explorer" src="https://user-images.githubusercontent.com/82480230/181007334-41756cbe-e5b4-41b2-9a6e-ae50acde2f86.PNG" />
 </p>
 
 ## :page_with_curl: Sobre
@@ -27,18 +17,14 @@ Este repositório contém uma aplicação em ReactJS utilizando TypeScript.
 
 Essa é a aplicação Github Explorer, nela o usuário consegue cadastrar repositórios do GitHub e eles ficam salvos no LocalStorage. Ao clicar em um repositório cadastrado o usuário será direcionado a uma tela exclusiva desse repositório. Nessa tela é possível obter informações do repositório, como por exemplo, número de stars, forks e issues abertas, e também uma listagem de algumas dessas issues.
 
-Adicionei um efeito de loading quando as informações de um repositório estão carregando ao acessar a página de um repositório específico.
-
 ## :hammer: Tecnologias
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [ReactJS](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [React Router Dom](https://reacttraining.com/react-router/web/guides/quick-start)
-- [Axios](https://github.com/axios/axios)
 - [Styled Components](https://styled-components.com/)
 - [React Icons](https://www.npmjs.com/package/react-icons)
-- [Skeleton Loading](https://www.npmjs.com/package/react-loading-skeleton)
 
 ## :books: Requisitos
 - Ter [**Git**](https://git-scm.com/) para clonar o projeto.
@@ -47,10 +33,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## :rocket: Começando
 ``` bash
   # Clonar o projeto:
-  $ git clone https://github.com/MatheusPires99/GoStack-11.0-GithubExplore github_explorer
+  $ git clone https://github.com/EvertonCarvalho1/github-explorer.git
 
   # Entrar no diretório:
-  $ cd github_explorer
+  $ cd github-explorer
 ```
 
 ## :gear: Iniciando front-end
@@ -60,6 +46,3 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
   # Rodar a aplicação:
   $ yarn start
-```
-
-Feito com ❤️ por Matheus Pires 👋🏻 [Get in touch!](https://github.com/MatheusPires99)
